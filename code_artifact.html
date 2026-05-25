@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飛魚季的關鍵設備清單：從拼板舟到儀式用品</title>
+    <!-- 載入 Noto Sans TC 中文字體與優雅的義大利字體 Cinzel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #010710;
+            --bg-ocean: #041427;
+            --bg-card: #081d35;
+            --accent-cyan: #00f0ff;
+            --accent-gold: #ffd700;
+            --text-light: #e2f1ff;
+            --text-muted: #7da0c0;
+            --taov-red: #d9383a;
+            --transition-smooth: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+            font-family: 'Noto Sans TC', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* 深海動態流體背景 */
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, #062444 0%, #010710 80%);
+            z-index: -2;
+        }
+
+        .ocean-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/black-thread.png');
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* 頂部導覽列 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(1, 7, 16, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+        }
+
+        nav .logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        nav .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav .nav-menu button {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 500;
+        }
+
+        nav .nav-menu button:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        /* SPA 頁面切換機制 */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== 頁面 1：主要展覽大廳 ==================== */
+
+        /* 首頁 Banner */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-shadow: 0 0 50px rgba(0, 240, 255, 0.6);
+            line-height: 1.2;
+        }
+
+        header p.subtitle {
+            font-size: 1.7rem;
+            color: var(--accent-cyan);
+            margin-bottom: 45px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        /* 時間現跑動畫 */
+        .live-clock-panel {
+            background: rgba(4, 20, 39, 0.7);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 15px 45px;
+            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .live-clock-panel p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .clock-digits {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Cinzel', monospace;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            animation: bounce 2s infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); opacity: 0.4; }
+            50% { transform: translateY(8px); opacity: 1; }
+        }
+
+        /* 導覽大廳：展覽故事線 & 觀展路徑看板 (互動點 1) */
+        .curator-board {
+            max-width: 1100px;
+            margin: 60px auto;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(4, 20, 39, 0.8) 100%);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .curator-board h2 {
+            font-size: 1.6rem;
+            color: var(--accent-cyan);
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+        }
+
+        .board-col h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .board-col p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* 觀展路徑流程小圖 */
+        .path-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .step-item {
+            background: rgba(1, 7, 16, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .step-item:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            color: var(--bg-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* ==================== 展覽時間軸主結構 ==================== */
+        /* 交錯式時間軸核心邏輯：
+           奇數行 (odd)：標題在左 (text-side)，卡片在右 (card-side) 
+           偶數行 (even)：標題在右 (text-side)，卡片在左 (card-side)
+           兩側完美「垂直居中對齊 (align-items: center)」 
+        */
+        
+        .exhibition-timeline-layout {
+            max-width: 1100px;
+            margin: 100px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* 中央垂直線 */
+        .exhibition-timeline-layout::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50px;
+            bottom: 50px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan) 0%, rgba(0, 240, 255, 0.1) 100%);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .timeline-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* 關鍵：垂直居中對齊 */
+            margin-bottom: 120px;
+            position: relative;
+            width: 100%;
+        }
+
+        /* 奇數行：標題在左，卡片在右 */
+        .timeline-row:nth-child(odd) {
+            flex-direction: row;
+        }
+        .timeline-row:nth-child(odd) .text-side {
+            text-align: right;
+            padding-right: 50px;
+        }
+        .timeline-row:nth-child(odd) .card-side {
+            padding-left: 50px;
+        }
+
+        /* 偶數行：卡片在左，標題在右 */
+        .timeline-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-row:nth-child(even) .text-side {
+            text-align: left;
+            padding-left: 50px;
+        }
+        .timeline-row:nth-child(even) .card-side {
+            padding-right: 50px;
+        }
+
+        .text-side {
+            width: 45%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-side {
+            width: 45%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 雙向滾動漸變效果 */
+        /* 奇數行：卡片輕微往右旋轉，從右滑入 */
+        .timeline-row:nth-child(odd) .scroll-reveal {
+            transform: translateX(40px) rotate(0.5deg);
+        }
+        /* 偶數行：卡片輕微往左旋轉，從左滑入 */
+        .timeline-row:nth-child(even) .scroll-reveal {
+            transform: translateX(-40px) rotate(-0.5deg);
+        }
+
+        /* 當滾動至該區塊時，啟動 visible */
+        .timeline-row.visible .scroll-reveal {
+            opacity: 1;
+            transform: translateX(0) rotate(0);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        /* 中央時間軸刻度錨點圓點 */
+        .timeline-bullet {
+            width: 18px;
+            height: 18px;
+            background: var(--bg-deep);
+            border: 4px solid var(--text-muted);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: var(--transition-smooth);
+        }
+
+        /* 當該列被激活時，時間圓點與標題特效 */
+        .timeline-row.visible .timeline-bullet {
+            background: var(--accent-cyan);
+            border-color: #ffffff;
+            scale: 1.35;
+            box-shadow: 0 0 15px var(--accent-cyan), 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+
+        /* 時間軸標題設計 */
+        .timeline-left-header {
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-left-header h3 {
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .timeline-left-header p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        /* 激活時時間軸 Title 點亮變色 */
+        .timeline-row.visible .timeline-left-header h3 {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+        }
+
+        /* 藏品卡片外觀設計 */
+        .collection-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .collection-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 50px rgba(0, 240, 255, 0.2);
+            transform: translateY(-6px);
+        }
+
+        /* 互動點 2：互動探照燈 Hover Tool 圖片遮罩 */
+        .card-visual-frame {
+            position: relative;
+            height: 280px;
+            background: linear-gradient(135deg, #010c18 0%, #05203c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* 真實藏品圖片樣式 */
+        .card-visual-frame img.showcase-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .collection-card:hover img.showcase-img {
+            transform: scale(1.08);
+        }
+
+        /* 滑動展現外觀描述與尺寸浮層 */
+        .card-details-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 7, 16, 0.95);
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(100%); /* 從下方滑入 */
+            transition: var(--transition-smooth);
+        }
+
+        .collection-card:hover .card-details-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-details-overlay h4 {
+            font-size: 1.15rem;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-details-overlay p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card-details-overlay .dim-tag {
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-top: auto;
+            font-weight: 500;
+        }
+
+        /* 卡片文字描述區 */
+        .card-description-panel {
+            padding: 30px;
+        }
+
+        .card-description-panel .chrono-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: rgba(0, 240, 255, 0.12);
+            color: var(--accent-cyan);
+            padding: 5px 15px;
+            border-radius: 30px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            font-weight: 500;
+        }
+
+        .card-description-panel h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .card-description-panel p.reason-summary {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .card-bottom-button {
+            padding: 20px 30px;
+            background: rgba(1, 7, 16, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .collection-card:hover .card-bottom-button {
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        /* 互動點 3：文化儀式小測驗 (Culture Quiz) */
+        .culture-quiz-section {
+            max-width: 1100px;
+            margin: 100px auto;
+            background: linear-gradient(135deg, #031427 0%, #010710 100%);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .culture-quiz-section h2 {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .culture-quiz-section p.quiz-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .quiz-question-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .quiz-question-card h3 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: rgba(8, 29, 53, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
+            text-align: left;
+            padding: 16px 25px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .option-btn.correct {
+            border-color: #2ec4b6;
+            background: rgba(46, 196, 182, 0.15);
+            color: #ffffff;
+        }
+
+        .option-btn.wrong {
+            border-color: var(--taov-red);
+            background: rgba(217, 56, 58, 0.15);
+            color: #ffffff;
+        }
+
+        .quiz-feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(0, 240, 255, 0.05);
+            border-left: 5px solid var(--accent-cyan);
+            display: none;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+
+        /* ==================== 頁面 2：獨立展品詳細檔案頁面 ==================== */
+        /* 嚴格要求：圖片在上面，metadata（Dublin Core）在下面 */
+
+        .detail-page-wrapper {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        /* 返回按鈕與麵包屑 */
+        .breadcrumb-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .return-btn {
+            background: none;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--accent-cyan);
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .return-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-deep);
+            box-shadow: 0 0 15px var(--accent-cyan);
+            border-color: #ffffff;
+        }
+
+        .catalog-path-indicator {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 檔案主卡片（要求：圖片在上面，後設資料在下面） */
+        .detail-main-layout {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 35px 70px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 上半部：大型圖片展示區 */
+        .detail-top-image-frame {
+            height: 480px;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .detail-top-image-frame img.detail-large-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 完整呈現古物全貌不拉伸 */
+            background-color: rgba(1, 7, 16, 0.95);
+            z-index: 1;
+        }
+
+        /* 浮動在圖片底部的說明條 */
+        .detail-img-footer-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(1, 7, 16, 0.9) 0%, rgba(1, 7, 16, 0) 100%);
+            padding: 30px 40px;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .detail-img-footer-overlay h2 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .detail-img-footer-overlay .tribe-badge {
+            background: var(--taov-red);
+            color: #ffffff;
+            font-size: 0.8rem;
+            padding: 4px 14px;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .detail-img-footer-overlay .dims-display-strip {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* 下半部：Dublin Core 後設資料區 */
+        .detail-bottom-metadata-frame {
+            padding: 50px;
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(1, 7, 16, 0.5) 100%);
+        }
+
+        .detail-bottom-metadata-frame h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--accent-cyan);
+            padding-bottom: 12px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dc-profile-grid {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .dc-profile-grid tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .dc-profile-grid tr:last-child {
+            border-bottom: none;
+        }
+
+        .dc-profile-grid th, .dc-profile-grid td {
+            padding: 16px 15px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        .dc-profile-grid th {
+            width: 30%;
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .dc-profile-grid th small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 300;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        .dc-profile-grid td {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* 頁尾 */
+        footer {
+            background: #010307;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* 行動端與平板響應式自適應排版 */
+        @media (max-width: 900px) {
+            .board-grid {
+                grid-template-columns: 1fr;
+            }
+            .exhibition-timeline-layout::before {
+                display: none; /* 行動端隱藏時間軸中央線 */
+            }
+            .timeline-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                margin-bottom: 70px;
+                gap: 20px;
+            }
+            .text-side, .card-side {
+                width: 100% !important;
+                padding: 0 !important;
+                text-align: left !important;
+            }
+            .timeline-bullet {
+                display: none; /* 行動端隱藏圓點 */
+            }
+            header h1 {
+                font-size: 2.8rem;
+            }
+            .detail-top-image-frame {
+                height: 300px;
+            }
+            .detail-bottom-metadata-frame {
+                padding: 25px;
+            }
+            .detail-img-footer-overlay {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景圖層 -->
+    <div class="ocean-bg"></div>
+    <div class="ocean-pattern"></div>
+
+    <!-- 頂部定位導覽列 -->
+    <nav>
+        <div class="logo" onclick="navigateToExhibition()">
+            <i class="fa-solid fa-anchor"></i> TATALA · 達悟特展
+        </div>
+        <div class="nav-menu">
+            <button onclick="scrollToExhibition()">時間軸展覽</button>
+            <button onclick="scrollToQuiz()">文化小挑戰</button>
+        </div>
+    </nav>
+
+    <!-- ==================== 頁面 1：主要展覽大廳 ==================== -->
+    <div id="page-exhibition" class="page active">
+        
+        <!-- 首頁 Banner -->
+        <header>
+            <h1>飛魚季的關鍵設備清單</h1>
+            <p class="subtitle">從拼板舟到儀式用品：線上數位展</p>
+            
+            <!-- 時間現跑動畫組件 -->
+            <div class="live-clock-panel">
+                <p><i class="fa-solid fa-compass fa-spin"></i> 蘭嶼海域 · 當前時序座標</p>
+                <div class="clock-digits" id="liveClock">00 : 00 : 00</div>
+            </div>
+
+            <div class="scroll-indicator" onclick="scrollToBoard()">
+                <span>向下滾動 進入導覽大廳</span>
+                <i class="fa-solid fa-angles-down"></i>
+            </div>
+        </header>
+
+        <!-- 導覽大廳：故事線與推薦路徑 (互動點 1) -->
+        <section class="curator-board" id="curator-intro">
+            <h2><i class="fa-solid fa-feather-pointed"></i> 策展故事線與觀展路徑</h2>
+            <div class="board-grid">
+                <div class="board-col">
+                    <h3><i class="fa-solid fa-book-open"></i> 展覽故事線</h3>
+                    <p>達悟（雅美）族人的飛魚季（Rayon），是一場人、海洋與神靈（Anito）的年度神聖盟約。這不僅僅是生業漁撈，更蘊含了精細的歲時生態智慧。</p>
+                    <p>本展覽精選國立臺灣博物館四件最具關鍵技術價值的典藏文物。我們將帶領您沿著<strong>「陸地籌備 ➔ 祭儀塗血 ➔ 深海捕撈 ➔ 個人與生態永續」</strong>的儀式時序，解讀這些物件如何承載技術、信仰與自然共生的海洋契約。</p>
+                </div>
+                <div class="board-col">
+                    <h3><i class="fa-solid fa-compass"></i> 推薦觀展路徑（點擊可快速定位）</h3>
+                    <div class="path-steps">
+                        <div class="step-item" onclick="scrollToRow('row-at001152')">
+                            <div class="step-num">1</div>
+                            <div>
+                                <strong style="color: #fff;">第一站：曬飛魚架</strong>
+                                <p style="margin:0; font-size:0.8rem;">時序：正式舉行前（籌備期）</p>
+                            </div>
+                        </div>
+                        <div class="step-item" onclick="scrollToRow('row-at001558')">
+                            <div class="step-num">2</div>
+                            <div>
+                                <strong style="color: #fff;">第二站：儀式竹器</strong>
+                                <p style="margin:0; font-size:0.8rem;">時序：捕獲與祭祀塗血</p>
+                            </div>
+                        </div>
+                        <div class="step-item" onclick="scrollToRow('row-at000658')">
+                            <div class="step-num">3</div>
+                            <div>
+                                <strong style="color: #fff;">第三站：釣線木軸</strong>
+                                <p style="margin:0; font-size:0.8rem;">時序：日間深海盤線釣</p>
+                            </div>
+                        </div>
+                        <div class="step-item" onclick="scrollToRow('row-at003057')">
+                            <div class="step-num">4</div>
+                            <div>
+                                <strong style="color: #fff;">第四站：一人座小船</strong>
+                                <p style="margin:0; font-size:0.8rem;">時序：季中至季後機動期</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 時間軸主體：交錯佈局排版，完美垂直居中對齊 -->
+        <section class="exhibition-timeline-layout" id="timeline-exhibit">
+            
+            <!-- 展件 1：曬飛魚架（標題在左，卡片在右） -->
+            <div class="timeline-row" id="row-at001152">
+                <!-- 修正：圓圈時間點放置在此行最上層，脫離 text-side 以防止位移 -->
+                <div class="timeline-bullet"></div>
+
+                <!-- 左側時間軸 Title -->
+                <div class="text-side">
+                    <div class="timeline-left-header">
+                        <h3>籌備與搭建期</h3>
+                        <p>正式舉行前</p>
+                    </div>
+                </div>
+                <!-- 右側藏品卡片 -->
+                <div class="card-side scroll-reveal">
+                    <div class="collection-card" onclick="openDetailPage('at001152')">
+                        <!-- 互動點 2：工藝外觀與尺寸探照燈 (嵌入真實藏品圖一) -->
+                        <div class="card-visual-frame">
+                            <img src="https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=MU5AK2MH0V06M6520NKW0V06M6M10BMD0V06M60VKC5JK50N5Y5F53M75IK75C" alt="曬飛魚架" class="showcase-img">
+                            <div class="card-details-overlay">
+                                <h4><i class="fa-solid fa-magnifying-glass"></i> 工藝外觀與尺寸特寫</h4>
+                                <p><strong>外觀：</strong>一枝一端分叉的樹幹。</p>
+                                <p class="dim-tag"><i class="fa-solid fa-ruler"></i> 尺寸規格：長:1778mm、徑:30mm、淨重:485g</p>
+                            </div>
+                        </div>
+                        <div class="card-description-panel">
+                            <div class="chrono-tag">時序一：飛魚季正式舉行前（籌備與搭建期）</div>
+                            <h3>曬飛魚架</h3>
+                            <p class="reason-summary"><strong>選擇理由：</strong>飛魚季的實踐不僅止於海上的捕撈，後續的食物處理同樣神聖。在飛魚季來臨前，族人必須上山砍伐木材，於主屋與涼臺間的空地中央搭建曬飛魚架。曬飛魚架不僅是保存食物的重要設備，更是傳遞族群生態智慧與歲時祭儀的核心物件。</p>
+                        </div>
+                        <div class="card-bottom-button">
+                            <span>點擊進入獨立檔案觀看 Dublin Core</span>
+                            <i class="fa-solid fa-circle-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 展件 2：竹器（卡片在左，標題在右） -->
+            <div class="timeline-row" id="row-at001558">
+                <!-- 修正：圓圈時間點放置在此行最上層，脫離 text-side 以防止位移 -->
+                <div class="timeline-bullet"></div>
+
+                <!-- 右側時間軸 Title（在交錯架構下，即使 reverse 依然會被擺在相應的位置） -->
+                <div class="text-side">
+                    <div class="timeline-left-header">
+                        <h3>祭祀與塗血儀式</h3>
+                        <p>魚季展開期間</p>
+                    </div>
+                </div>
+                <!-- 左側藏品卡片 -->
+                <div class="card-side scroll-reveal">
+                    <div class="collection-card" onclick="openDetailPage('at001558')">
+                        <!-- 互動點 2：嵌入真實藏品圖二 -->
+                        <div class="card-visual-frame">
+                            <img src="https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=KY5DKPMR535JM1KCM7KP0SMDM506M60VKC5JK50N5Y5F53M75IK75C" alt="竹器" class="showcase-img">
+                            <div class="card-details-overlay">
+                                <h4><i class="fa-solid fa-magnifying-glass"></i> 工藝外觀與尺寸特寫</h4>
+                                <p><strong>外觀：</strong>竹製裝盛工具。</p>
+                                <p class="dim-tag"><i class="fa-solid fa-ruler"></i> 尺寸規格：140mm</p>
+                            </div>
+                        </div>
+                        <div class="card-description-panel">
+                            <div class="chrono-tag">時序二：飛魚季期間（捕獲與祭祀塗血儀式）</div>
+                            <h3>竹器</h3>
+                            <p class="reason-summary"><strong>選擇理由：</strong>在雅美(達悟)族的信仰世界中，飛魚季充滿了神聖的儀式性，族人相信牲血具有招引飛魚的靈力，捕獲飛魚後，會使用特定的竹管盛裝牲血，並在飛魚身上進行象徵性的塗血儀式。此舉具有「將飛魚之靈保存於此，並引誘更多友魚前來」的信仰涵義。這件竹器跨越了實用工具的範疇，晉升為連結人、神與海洋的儀式設備。</p>
+                        </div>
+                        <div class="card-bottom-button">
+                            <span>點擊進入獨立檔案觀看 Dublin Core</span>
+                            <i class="fa-solid fa-circle-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 展件 3：釣線木軸（標題在左，卡片在右） -->
+            <div class="timeline-row" id="row-at000658">
+                <!-- 修正：圓圈時間點放置在此行最上層，脫離 text-side 以防止位移 -->
+                <div class="timeline-bullet"></div>
+
+                <!-- 左側時間軸 Title -->
+                <div class="text-side">
+                    <div class="timeline-left-header">
+                        <h3>日間深海捕撈期</h3>
+                        <p>中層洋流盤線釣</p>
+                    </div>
+                </div>
+                <!-- 右側藏品卡片 -->
+                <div class="card-side scroll-reveal">
+                    <div class="collection-card" onclick="openDetailPage('at000658')">
+                        <!-- 互動點 2：嵌入真實藏品圖三 -->
+                        <div class="card-visual-frame">
+                            <img src="https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=KY5DKPMR535JM1KCM7KP0SMDMK0GM60VKC5JK50N5Y5F53M75IK75C" alt="釣線木軸" class="showcase-img">
+                            <div class="card-details-overlay">
+                                <h4><i class="fa-solid fa-magnifying-glass"></i> 工藝外觀與尺寸特寫</h4>
+                                <p><strong>外觀：</strong>一個可轉動的捲繩架下附一圓木柄。</p>
+                                <p class="dim-tag"><i class="fa-solid fa-ruler"></i> 尺寸規格：長:310mm、寬:83mm、淨重:150g</p>
+                            </div>
+                        </div>
+                        <div class="card-description-panel">
+                            <div class="chrono-tag">時序三：飛魚季期間（日間捕魚期）</div>
+                            <h3>釣線木軸</h3>
+                            <p class="reason-summary"><strong>選擇理由：</strong>本展品為雅美(達悟)族人於飛魚季期間，進行日間「盤線深海釣（makawey）」時不可或缺的關鍵工具。此物件為一可轉動的捲繩架，作業時需將其置於船內槳架下方，用以操作垂入深海的釣線。若缺乏此項「關鍵設備」，族人便難以在變幻莫測的黑潮洋流中穩定捕獲飛魚，因此極具典藏與文化技術的保存價值。</p>
+                        </div>
+                        <div class="card-bottom-button">
+                            <span>點擊進入獨立檔案觀看 Dublin Core</span>
+                            <i class="fa-solid fa-circle-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 展件 4：一人座小船（卡片在左，標題在右） -->
+            <div class="timeline-row" id="row-at003057">
+                <!-- 修正：圓圈時間點放置在此行最上層，脫離 text-side 以防止位移 -->
+                <div class="timeline-bullet"></div>
+
+                <!-- 右側時間軸 Title -->
+                <div class="text-side">
+                    <div class="timeline-left-header">
+                        <h3>季中至季後機動期</h3>
+                        <p>個人機動出海</p>
+                    </div>
+                </div>
+                <!-- 左側藏品卡片 -->
+                <div class="card-side scroll-reveal">
+                    <div class="collection-card" onclick="openDetailPage('at003057')">
+                        <!-- 互動點 2：嵌入真實藏品圖四 -->
+                        <div class="card-visual-frame">
+                            <img src="https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=5EKP5YMR0EM60O51M7KP0TM2090BM60VKC5JK50N5Y5F53M75IK75C" alt="一人座小船" class="showcase-img">
+                            <div class="card-details-overlay">
+                                <h4><i class="fa-solid fa-magnifying-glass"></i> 工藝外觀與尺寸特寫</h4>
+                                <p><strong>外觀：</strong>底部龍骨為基底，頭尾銜接高聳龍骨，兩側船舷各有三層橫船板。表面雕刻有水波紋、三角紋、人形紋和船眼紋，並以紅、白、黑三色彩繪。</p>
+                                <p class="dim-tag"><i class="fa-solid fa-ruler"></i> 尺寸規格：長:3910mm、寬:830mm、高:1330mm</p>
+                            </div>
+                        </div>
+                        <div class="card-description-panel">
+                            <div class="chrono-tag">時序四：飛魚季中後期（個人與日間捕撈期）</div>
+                            <h3>一人座小船</h3>
+                            <p class="reason-summary"><strong>選擇理由：</strong>拼板舟不僅是雅美(達悟)族重要的生業工具，精湛的拼板舟建造工藝更是獨步全球，承載了海洋民族的藝術美感。相較於季初集體出海的大船，一人座小船在飛魚季中後期扮演著極為機動、關鍵的角色，體現了個體與海洋的對話，是展現達悟海洋文化工藝結晶的代表性典藏。</p>
+                        </div>
+                        <div class="card-bottom-button">
+                            <span>點擊進入獨立檔案觀看 Dublin Core</span>
+                            <i class="fa-solid fa-circle-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 互動點 3：文化儀式知識測驗 -->
+        <section class="culture-quiz-section" id="quiz-block">
+            <h2><i class="fa-solid fa-graduation-cap"></i>飛魚祭儀文化挑戰</h2>
+            <p class="quiz-desc">完成本展覽專屬的儀式核心知識點問答，檢驗您對雅美族海洋哲學的理解程度！</p>
+            
+            <div class="quiz-question-card">
+                <h3>問題：在達悟族的飛魚季中，族人深信捕獲飛魚後，使用「竹器」盛裝牲血並塗抹於魚身上的核心宗教意涵為何？</h3>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(false, this)">
+                        <span>A. 作為對飛魚肉質進行保鮮與醃製的一種實用防腐技術</span>
+                        <i class="fa-regular fa-circle"></i>
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(true, this)">
+                        <span>B. 相信牲血具引誘飛魚之靈力，用以在精神上「保存該魚之靈」並感召招引更多友魚前來</span>
+                        <i class="fa-regular fa-circle"></i>
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(false, this)">
+                        <span>C. 僅作為區分不同部落大船在分配魚獲時的物理記號</span>
+                        <i class="fa-regular fa-circle"></i>
+                    </button>
+                </div>
+                
+                <div class="quiz-feedback" id="quizFeedback">
+                    <strong>💡 策展人解析：</strong><br>
+                    答對了！在雅美（達悟）族的萬物有靈信仰中，飛魚季充滿神聖的祭儀規範。
+                    「竹器（編目號：AT001558）」盛裝的牲血具有招引魚靈的強大宗教力，塗血儀式象徵著對自然恩賜的尊敬，以及與魚靈建立長久的互惠關係，這是一項超越實用漁撈工具、直達心靈契約的核心祭器。
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-- ==================== 頁面 2：獨立展品詳細檔案頁面 ==================== -->
+    <!-- 嚴格要求：藏品真實圖片在上面，metadata（Dublin Core）在下面 -->
+    <div id="page-detail" class="page">
+        <div class="detail-page-wrapper">
+            
+            <!-- 導覽列與麵包屑 -->
+            <div class="breadcrumb-row">
+                <button class="return-btn" onclick="navigateToExhibition()">
+                    <i class="fa-solid fa-arrow-left-long"></i> 返回展覽大廳
+                </button>
+                <div class="catalog-path-indicator">
+                    典藏庫 / <span id="breadcrumb-current" style="color: var(--accent-cyan);">藏品標題</span>
+                </div>
+            </div>
+
+            <!-- 詳細檔案主佈局：圖片在上面，後設資料在下面 -->
+            <div class="detail-main-layout">
+                
+                <!-- 上半部：真實圖片展示區 -->
+                <div class="detail-top-image-frame">
+                    <img src="" alt="藏品大圖" class="detail-large-img" id="detail-artwork-image">
+                    
+                    <!-- 覆蓋於圖片下方的標題文字條 -->
+                    <div class="detail-img-footer-overlay">
+                        <div>
+                            <span class="tribe-badge" id="detail-artwork-ethnology">雅美族(達悟族)</span>
+                            <h2 id="detail-artwork-title">藏品名稱</h2>
+                        </div>
+                        <div class="dims-display-strip" id="detail-artwork-dims">長: 000mm、寬: 000mm</div>
+                    </div>
+                </div>
+
+                <!-- 下半部：Dublin Core 後設資料詮釋表 -->
+                <div class="detail-bottom-metadata-frame">
+                    <h3><i class="fa-solid fa-list-check" style="color: var(--accent-cyan);"></i> Dublin Core 後設資料著錄標準</h3>
+                    
+                    <table class="dc-profile-grid">
+                        <tr>
+                            <th>識別碼 <small>Identifier</small></th>
+                            <td id="dc-field-identifier">AT000000</td>
+                        </tr>
+                        <tr>
+                            <th>標題 <small>Title</small></th>
+                            <td id="dc-field-title">標題</td>
+                        </tr>
+                        <tr>
+                            <th>創作者 <small>Creator</small></th>
+                            <td id="dc-field-creator">未知</td>
+                        </tr>
+                        <tr>
+                            <th>主題 <small>Subject</small></th>
+                            <td id="dc-field-subject">主題分類</td>
+                        </tr>
+                        <tr>
+                            <th>描述 <small>Description</small></th>
+                            <td id="dc-field-description">描述內容</td>
+                        </tr>
+                        <tr>
+                            <th>出版者 <small>Publisher</small></th>
+                            <td id="dc-field-publisher">國立臺灣博物館</td>
+                        </tr>
+                        <tr>
+                            <th>類型 <small>Type</small></th>
+                            <td id="dc-field-type">實體物件</td>
+                        </tr>
+                        <tr>
+                            <th>格式 <small>Format</small></th>
+                            <td id="dc-field-format">未知</td>
+                        </tr>
+                        <tr>
+                            <th>來源 <small>Source</small></th>
+                            <td id="dc-field-source">國立臺灣博物館典藏查詢資訊系統</td>
+                        </tr>
+                        <tr>
+                            <th>語言 <small>Language</small></th>
+                            <td id="dc-field-language">中文</td>
+                        </tr>
+                        <tr>
+                            <th>權利 <small>Rights</small></th>
+                            <td id="dc-field-rights">國立臺灣博物館</td>
+                        </tr>
+                        <tr>
+                            <th>所屬族群 <small>Ethnology</small></th>
+                            <td id="dc-field-ethnology">雅美族(達悟族)</td>
+                        </tr>
+                        <tr>
+                            <th>尺寸 <small>Dimensions</small></th>
+                            <td id="dc-field-dimensions">長:00mm...</td>
+                        </tr>
+                        <tr>
+                            <th>外觀描述 <small>Physical Description</small></th>
+                            <td id="dc-field-physical">外觀描述</td>
+                        </tr>
+                        <tr>
+                            <th>祭儀時序 <small>Ritual Chronology</small></th>
+                            <td id="dc-field-chronology">祭儀時序名稱</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 線上數位互動展 ｜ 飛魚季的關鍵設備清單：從拼板舟到儀式用品</p>
+        <p style="opacity: 0.5; font-size: 0.75rem;">本展之文物編目原始權利與對應影像均屬：國立臺灣博物館 典藏查詢資訊系統 所有</p>
+    </footer>
+
+    <!-- JS 邏輯控制 -->
+    <script>
+        // 博物館後設資料與圖片對照資料庫 (Dublin Core 元數據庫)
+        const collectionDatabase = {
+            'at001152': {
+                image: 'https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=MU5AK2MH0V06M6520NKW0V06M6M10BMD0V06M60VKC5JK50N5Y5F53M75IK75C',
+                identifier: 'AT001152-001',
+                title: '曬飛魚架',
+                creator: '未知',
+                subject: '漁具',
+                description: '在舉行飛魚季前族人會進行各式準備工作，如上山砍伐飛魚架，曬飛魚架搭在主屋和涼臺間的空地中央，不同部落有不同的曬飛魚方法和時間。',
+                publisher: '國立臺灣博物館',
+                type: '實體物件',
+                format: '未知',
+                source: '國立臺灣博物館典藏查詢資訊系統',
+                language: '中文',
+                rights: '國立臺灣博物館',
+                ethnology: '雅美族(達悟族)',
+                dimensions: '長:1778mm、徑:30mm、淨重:485g',
+                physical: '一枝一端分叉的樹幹',
+                chronology: '飛魚季正式舉行前（籌備與搭建期）'
+            },
+            'at001558': {
+                image: 'https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=KY5DKPMR535JM1KCM7KP0SMDM506M60VKC5JK50N5Y5F53M75IK75C',
+                identifier: 'AT001558',
+                title: '竹器',
+                creator: '未知',
+                subject: '祭器祈禱具',
+                description: '族人相信，牲血具有引誘飛魚的能力，在日後捕獲飛魚時，也會使用適用的竹管在飛魚身上作象徵性的塗血，表示能將該條飛魚保存於此容器之中，也順道引誘更多友魚前來。',
+                publisher: '國立臺灣博物館',
+                type: '實體物件',
+                format: '未知',
+                source: '國立臺灣博物館典藏查詢資訊系統',
+                language: '中文',
+                rights: '國立臺灣博物館',
+                ethnology: '雅美族(達悟族)',
+                dimensions: '140mm',
+                physical: '竹製裝盛工具。',
+                chronology: '飛魚季期間（捕獲與祭祀塗血儀式）'
+            },
+            'at000658': {
+                image: 'https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=KY5DKPMR535JM1KCM7KP0SMDMK0GM60VKC5JK50N5Y5F53M75IK75C',
+                identifier: 'AT000658',
+                title: '釣線木軸',
+                creator: '未知',
+                subject: '日用雜器',
+                description: '本展品為雅美族人飛魚季期間白天出海捕魚時使用，為一可轉動的捲繩架，若沒有用此工具將釣線垂入海中，然後將釣線木軸置於船中槳架的下方。',
+                publisher: '國立臺灣博物館',
+                type: '實體物件',
+                format: '未知',
+                source: '國立臺灣博物館典藏查詢資訊系統',
+                language: '中文',
+                rights: '國立臺灣博物館',
+                ethnology: '雅美族(達悟族)',
+                dimensions: '長:310mm、寬:83mm、淨重:150g',
+                physical: '一個可轉動的捲繩架下附一圓木柄',
+                chronology: '飛魚季期間（日間捕魚期）'
+            },
+            'at003057': {
+                image: 'https://collections.culture.tw/ntm_collectionsweb/image.aspx?Size=640&FileName=5EKP5YMR0EM60O51M7KP0TM2090BM60VKC5JK50N5Y5F53M75IK75C',
+                identifier: 'AT003057',
+                title: '一人座小船',
+                creator: '未知',
+                subject: '漁具',
+                description: '雅美族是臺灣原住民族群中唯一會製造拼板舟的一族，拼板舟不僅是族人重要的生業工具，也是海洋民族藝術美感與精湛工藝的體現。拼板舟分為大、小兩種。',
+                publisher: '國立臺灣博物館',
+                type: '實體物件',
+                format: 'unused',
+                source: '國立臺灣博物館典藏查詢資訊系統',
+                language: '中文',
+                rights: '國立臺灣博物館',
+                ethnology: '雅美族(達悟族)',
+                dimensions: '長:3910mm、寬:830mm、高:1330mm',
+                physical: '整艘小船由底部龍骨為基底，頭尾銜接高聳而彎曲的船首龍骨與船尾龍骨，兩側的船舷各有三層橫船板，每層橫船板又分為船首板、中間板、船尾板三塊小船板。船板表面雕刻有曲折水波紋、三角紋、人形紋和船眼紋等紋樣，並以紅、白、黑三色塗料彩繪。',
+                chronology: '飛魚季中後期（個人與日間捕撈期）'
+            }
+        };
+
+        // 1. 首頁時間跑動功能
+        function updateLiveClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('liveClock').textContent = `${hours} : ${minutes} : ${seconds}`;
+        }
+        setInterval(updateLiveClock, 1000);
+        updateLiveClock();
+
+        // 2. 滾動定位引導
+        function scrollToBoard() {
+            document.getElementById('curator-intro').scrollIntoView({ behavior: 'smooth' });
+        }
+        function scrollToExhibition() {
+            document.getElementById('timeline-exhibit').scrollIntoView({ behavior: 'smooth' });
+        }
+        function scrollToQuiz() {
+            document.getElementById('quiz-block').scrollIntoView({ behavior: 'smooth' });
+        }
+        function scrollToRow(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 3. 雙向滑動淡入淡出核心 (Intersection Observer)
+        const revealOptions = {
+            root: null,
+            threshold: 0.25, // 當 25% 的行進入畫面可視區域時觸發
+            rootMargin: "-10% 0px -15% 0px"
+        };
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.timeline-row').forEach(row => {
+            timelineObserver.observe(row);
+        });
+
+        // 4. 互動點 3：儀式文化問答邏輯
+        function checkAnswer(isCorrect, element) {
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('correct', 'wrong');
+                btn.querySelector('i').className = 'fa-regular fa-circle';
+            });
+
+            if (isCorrect) {
+                element.classList.add('correct');
+                element.querySelector('i').className = 'fa-regular fa-circle-check';
+            } else {
+                element.classList.add('wrong');
+                element.querySelector('i').className = 'fa-regular fa-circle-xmark';
+            }
+
+            document.getElementById('quizFeedback').style.display = 'block';
+        }
+
+        // 5. 獨立展件詳細檔案頁面切換機制 (SPA Routing)
+        // 點擊後切換至「圖片在上面，後設資料在下面」
+        function openDetailPage(id) {
+            const data = collectionDatabase[id];
+            if (!data) return;
+
+            // 1. 綁定大圖與基本橫條資料 (嚴格遵守上方大圖要求)
+            const detailImg = document.getElementById('detail-artwork-image');
+            detailImg.src = data.image;
+            detailImg.alt = data.title;
+
+            document.getElementById('breadcrumb-current').textContent = data.title;
+            document.getElementById('detail-artwork-title').textContent = data.title;
+            document.getElementById('detail-artwork-ethnology').textContent = data.ethnology;
+            document.getElementById('detail-artwork-dims').innerHTML = `<i class="fa-solid fa-ruler-combined"></i> 典藏外觀規格：${data.dimensions}`;
+
+            // 2. 寫入下半部 Dublin Core 表格欄位值
+            document.getElementById('dc-field-identifier').textContent = data.identifier;
+            document.getElementById('dc-field-title').textContent = data.title;
+            document.getElementById('dc-field-creator').textContent = data.creator;
+            document.getElementById('dc-field-subject').textContent = data.subject;
+            document.getElementById('dc-field-description').textContent = data.description;
+            document.getElementById('dc-field-publisher').textContent = data.publisher;
+            document.getElementById('dc-field-type').textContent = data.type;
+            document.getElementById('dc-field-format').textContent = data.format;
+            document.getElementById('dc-field-source').textContent = data.source;
+            document.getElementById('dc-field-language').textContent = data.language;
+            document.getElementById('dc-field-rights').textContent = data.rights;
+            document.getElementById('dc-field-ethnology').textContent = data.ethnology;
+            document.getElementById('dc-field-dimensions').textContent = data.dimensions;
+            document.getElementById('dc-field-physical').textContent = data.physical;
+            document.getElementById('dc-field-chronology').textContent = data.chronology;
+
+            switchActivePage('page-detail');
+        }
+
+        function navigateToExhibition() {
+            switchActivePage('page-exhibition');
+        }
+
+        function switchActivePage(activePageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => {
+                p.classList.remove('active');
+            });
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                const activePage = document.getElementById(activePageId);
+                activePage.classList.add('active');
+            }, 250);
+        }
+    </script>
+</body>
+</html>
